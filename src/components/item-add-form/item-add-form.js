@@ -7,7 +7,7 @@ export default class ItemAddForm extends Component {
     return (
       //   <form>
       //     <input type="text" />
-      //     <button>Add Item</button>
+      //     <button className="btn btn-outline-secondary>Add Item</button>
       //   </form>
       <div className="item-add-form">
         <button

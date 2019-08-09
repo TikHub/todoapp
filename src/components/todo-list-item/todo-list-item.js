@@ -7,21 +7,28 @@ export default class TodoListItem extends Component {
     done: false,
     important: false
   };
-  onLabelClick = () => {
-    // done is not destructured
-    this.setState(state => {
-      return { done: !state.done };
-    });
-  };
-  onMarkImportant = () => {
-    // important is destructured
-    this.setState(({ important }) => {
-      return { important: !important };
-    });
-  };
+  // onLabelClick = () => {
+  //   // done is not destructured
+  //   this.setState(state => {
+  //     return { done: !state.done };
+  //   });
+  // };
+  // onMarkImportant = () => {
+  //   // important is destructured
+  //   this.setState(({ important }) => {
+  //     return { important: !important };
+  //   });
+  // };
   render() {
-    const { label, onDeleted } = this.props;
-    const { done, important = false } = this.state;
+    const {
+      done,
+      important,
+      label,
+      onDeleted,
+      onToggleImportant,
+      onToggleDone
+    } = this.props;
+
     let classNames = "todo-list-item";
     if (done) {
       classNames += " done";
@@ -31,14 +38,14 @@ export default class TodoListItem extends Component {
     }
     return (
       <span className={classNames}>
-        <span className="todo-list-item-label" onClick={this.onLabelClick}>
+        <span className="todo-list-item-label" onClick={onToggleDone}>
           {label}
         </span>
 
         <button
           type="button"
           className="btn btn-outline-success btn-sm float-right"
-          onClick={this.onMarkImportant}
+          onClick={onToggleImportant}
         >
           <i className="fa fa-exclamation" />
         </button>
